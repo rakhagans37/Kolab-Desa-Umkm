@@ -82,276 +82,9 @@ foreach ($produks['data'] as $produk) {
     <link rel="stylesheet" href="assets/css/nouislider.min.css">
     <link rel="stylesheet" href="assets/css/nouislider.pips.css">
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .list-group .list-group-item.active {
-            background-color: #255946;
-            border: #255946;
-        }
-
-        .list-group .list-group-item {
-            color: #255946;
-        }
-
-        .center-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .iframe-container {
-            text-align: center;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        img {
-            display: block;
-        }
-
-        /* Header Styles */
-        .header-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-top: 100px;
-            gap: 30px;
-            width: 60%;
-        }
-
-        .header-image {
-            width: 285px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 0;
-        }
-
-        .header-details {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .header-title {
-            font-weight: bold;
-            font-size: 32px;
-        }
-
-        .header-subtitle {
-            font-weight: light;
-            font-size: 20px;
-        }
-
-        .header-links {
-            display: flex;
-            flex-direction: row;
-            gap: 16px;
-            width: 100%;
-            margin: 0;
-        }
-
-        .link-content {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            font-weight: bold;
-            font-size: 14px;
-            border-radius: 4px;
-        }
-
-        .whatsapp-link {
-            width: 50%;
-        }
-
-        .whatsapp-content {
-            background-color: #255946;
-            color: white;
-            justify-content: space-evenly;
-        }
-
-        .detail-link {
-            width: 50%;
-        }
-
-        .detail-content {
-            border: 1px solid #255946;
-            color: #255946;
-            height: 100%;
-            justify-content: end;
-        }
-
-        .detail-text {
-            width: 100%;
-            text-align: center;
-        }
-
-        .expand-icon-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            background-color: #255946;
-            width: 52px;
-            border-radius: 2px;
-        }
-
-        .icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Content Styles */
-        .content-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            width: 100%;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        /* Product Styles */
-        .products-container {
-            grid-column: 2 / span 3;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            width: 100%;
-            gap: 14px;
-        }
-
-        .product-card {
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .products-container h3.product-title {
-            margin: auto;
-            font-size: 20px;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* List Group Styles */
-        .list-group-item {
-            cursor: pointer;
-        }
-
-        .list-group-item.active {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .p-6 {
-            padding: 6px !important;
-        }
-
-        /* Media Queries */
-
-        /* Medium */
-        @media (max-width: 1200px) {
-            .header-container {
-                gap: 20px;
-                width: 80%;
-            }
-        }
-
-        /* Small */
-        @media (max-width: 992px) {
-            .header-container {
-                flex-direction: column;
-                gap: 20px;
-                width: 100%;
-            }
-
-            .header-image {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-                border-radius: 12px;
-            }
-
-            .header-details {
-                width: 100%;
-            }
-
-            .header-title {
-                font-size: 24px;
-            }
-
-            .header-subtitle {
-                font-size: 16px;
-            }
-
-            .header-links {
-                gap: 10px;
-            }
-
-            .link-content {
-                font-size: 12px;
-            }
-
-            .whatsapp-link {
-                width: 100%;
-            }
-
-            .detail-link {
-                width: 100%;
-            }
-
-            .products-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Small */
-        @media screen and (max-width: 768px) {
-            .products-container {
-                grid-template-columns: repeat(2, 1fr);
-                grid-column: 1;
-            }
-
-            .content-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Extra Small */
-        @media screen and (max-width: 576px) {
-            .products-container {
-                grid-template-columns: repeat(2, 1fr);
-                grid-column: 1;
-                gap: 18px;
-            }
-
-            .content-container {
-                grid-template-columns: 1fr;
-            }
-
-            .product-card h3.product-title {
-                font-size: 16px;
-                text-align: center;
-                margin-top: 10px;
-                margin-bottom: 10px;
-            }
-
-            .product-card img.product-image {
-                height: 150px;
-            }
-        }
-    </style>
     <!-- template styles -->
     <link rel="stylesheet" href="assets/sass/main.css">
+    <link rel="stylesheet" href="assets/css/product.css">
 </head>
 
 <body>
@@ -362,6 +95,18 @@ foreach ($produks['data'] as $produk) {
         <div class="stricky-header stricked-menu main-menu">
             <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
         </div><!-- /.stricky-header -->
+
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image:url('https://cms-pangalengan.desaumkm.com<?= $contact["data"]["attributes"]["slide_image"]["data"]["attributes"]["url"] ?>')" alt=""></div>
+            <div class="container">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li></li>
+                    <li></li>
+                    <li><span></span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+                <h2><?= $namaUmkm ?></h2>
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
 
         <section class="project-details">
             <div class="container" style="gap: 40px;">
@@ -404,7 +149,7 @@ foreach ($produks['data'] as $produk) {
                     <div class="products-container">
                         <?php foreach ($filteredProducts as $product) { ?>
                             <div class="product-card">
-                                <a href="detail-product.php?id=<?= $product['id']?>">
+                                <a href="detail-product.php?id=<?= $product['id'] ?>">
                                     <img src="https://cms-pangalengan.desaumkm.com<?= $product['attributes']['foto_produk']['data'][0]['attributes']['url'] ?>" alt="<?= $product['attributes']['nama_produk'] ?>" class="product-image">
                                     <h3 class="product-title"><?= $product['attributes']['nama_produk'] ?></h3>
                                 </a>

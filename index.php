@@ -44,8 +44,9 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
     <link rel="stylesheet" href="assets/css/newcss.css">
 
     <!-- template styles -->
-    <link rel="stylesheet" href="assets/sass/main.css">
     <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="assets/sass/main.css">
+
     <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
 </head>
 
@@ -196,36 +197,40 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                     <h3>UMKM KAMI</h3>
                 </div><!-- /.block-title -->
                 <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 0, "slidesPerView": 1, "loop": true, "slidesPerGroup": 1, "pagination": {
-            "el": "#projects-one__swiper-pagination",
-            "type": "bullets",
-            "clickable": true
-        },
-        "breakpoints": {
-            "0": {
-                "spaceBetween": 0,
-                "slidesPerView": 1,
-                "slidesPerGroup": 1
-            },
-            "640": {
-                "spaceBetween": 30,
-                "slidesPerView": 2,
-                "slidesPerGroup": 2
-            },
-            "992": {
-                "spaceBetween": 30,
-                "slidesPerView": 2,
-                "slidesPerGroup": 2
-            }
-        }}'>
+                        "el": "#projects-one__swiper-pagination",
+                        "type": "bullets",
+                        "clickable": true
+                    },
+                    "breakpoints": {
+                        "0": {
+                            "spaceBetween": 0,
+                            "slidesPerView": 1,
+                            "slidesPerGroup": 1
+                        },
+                        "640": {
+                            "spaceBetween": 100,
+                            "slidesPerView": 2,
+                            "slidesPerGroup": 2
+                        },
+                        "992": {
+                            "spaceBetween": 100,
+                            "slidesPerView": 2,
+                            "slidesPerGroup": 2
+                        }
+                    }}'>
                     <div class="swiper-wrapper">
                         <?php
                         foreach ($umkms['data'] as $umkm) { ?>
-                            <div class="swiper-slide">
-                                <div class="product-card">
-                                    <img src="https://cms-pangalengan.desaumkm.com<?= $umkm['attributes']['profile_picture_umkm']['data']['attributes']['url'] ?>" class="product-image">
-                                    <h3 class="product-title"><?= $umkm['attributes']['nama_umkm'] ?></h3>
-                                </div>
-                            </div>
+                            <ul class="swiper-slide" style="padding: 0;">
+                                <li style="margin: 0; list-style:none;">
+                                    <div class="product-card">
+                                        <a href="detail-umkm.php?id=<?= $umkm['id'] ?>">
+                                            <img src="https://cms-pangalengan.desaumkm.com<?= $umkm['attributes']['profile_picture_umkm']['data']['attributes']['url'] ?>" class="product-image">
+                                            <h3 class="product-title"><?= $umkm['attributes']['nama_umkm'] ?></h3>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
                         <?php
                         }
                         ?>
@@ -355,16 +360,16 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                 }
             }}'>
                     <!-- Looping Data Logo Mitra -->
-                    <div class="swiper-wrapper">
+                    <ul class="swiper-wrapper" id="ul">
                         <?php
                         foreach ($mitras['data'] as $mitra) { ?>
-                            <div class="swiper-slide">
+                            <li class="swiper-slide">
                                 <img src="https://cms-pangalengan.desaumkm.com<?= $mitra['attributes']['foto_mitra']['data'][0]['attributes']['url'] ?>" width="200" alt="" style="max-width: 170%;">
-                            </div>
+                            </li>
                         <?php
                         }
                         ?>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>
