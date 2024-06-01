@@ -44,44 +44,34 @@ $umkms2 = get_data_api('https://cms-pangalengan.desaumkm.com/api/umkms/11?popula
     <link rel="stylesheet" href="assets/sass/main.css?version=1.1">
 
     <style>
-        .projects-one__content {
-            text-align: left;
-            position: absolute;
-            top: 145px;
-            right: 40px;
-            bottom: 0;
-            left: 40px;
-            border-radius: 5px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            /* Center the content vertically */
-            align-items: flex-start;
-            /* Align the content to the left */
-            height: 45%;
-            /* Set a fixed height to maintain vertical centering */
-            padding: 27px;
-            padding-bottom: 44px;
-            transition: transform 500ms ease, opacity 500ms ease;
-            transform: translateY(40%);
-            opacity: 0;
-            background-color: rgba($thm-primary-rgb, 0.9);
+        .products {
+            padding-top: 120px;
+            padding-bottom: 90px;
         }
 
-        .projects-one__button {
-            position: absolute;
-            top: 25px;
-            right: 30px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            font-size: 17px;
-            color: #fff;
+        .products-card {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 500ms ease;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .products-card__title {
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .products-card__content {
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .products-card__content>a>img {
+            width: 350px;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -107,21 +97,20 @@ $umkms2 = get_data_api('https://cms-pangalengan.desaumkm.com/api/umkms/11?popula
             </div><!-- /.container -->
         </section><!-- /.page-header -->
 
-        <div class="projects-one">
+        <div class="products">
             <div class="container">
-                <div class="row">
+
+                <div class="products-card">
                     <?php foreach ($umkms['data'] as $umkm) { ?>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="projects-one__single">
-                                <img src="https://cms-pangalengan.desaumkm.com<?= $umkm['attributes']['profile_picture_umkm']['data']['attributes']['url'] ?>" width="570" height="" alt="">
-                                <div class="projects-one__content">
-                                    <h3><a style="color: white; text-align: center; font-size: 19px" href="detail.php?id=<?= $umkm['id'] ?>"><?= $umkm['attributes']['nama_umkm'] ?> </a></h3>
-                                    <a href="detail.php?id=<?= $umkm['id'] ?>" class="projects-one__button"><i class="agrikon-icon-right-arrow"></i></a>
-                                </div>
-                            </div>
+                        <div class="products-card__content">
+                            <a href="detail-umkm.php?id=<?= $umkm['id'] ?>"><img src="https://cms-pangalengan.desaumkm.com<?= $umkm['attributes']['profile_picture_umkm']['data']['attributes']['url'] ?>">
+                                <h3 class="products-card__title"><?= $umkm['attributes']['nama_umkm'] ?></h3>
+                            </a>
+
                         </div>
                     <?php } ?>
                 </div>
+
             </div>
         </div>
 

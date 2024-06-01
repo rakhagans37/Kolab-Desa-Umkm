@@ -45,27 +45,7 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/sass/main.css">
-    <style>
-        .product-card {
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .product-image {
-            width: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .product-card h3.product-title {
-            font-size: 28px;
-            font-weight: 700;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/product.css">
     <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
 </head>
 
@@ -121,8 +101,8 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                     <div class="swiper-button-next" id="main-slider__swiper-button-prev"><i class="agrikon-icon-right-arrow"></i></div>
                 </div><!-- /.main-slider__nav -->
 
-            </div><!-- /.swiper-container thm-swiper__slider -->
-        </section><!-- /.main-slider -->
+            </div>
+        </section>
 
         <section class="service-one">
             <div class="container">
@@ -140,30 +120,6 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                     <?php
                     }
                     ?>
-                    <!-- <div class="col-md-12 col-lg-4 wow fadeInUp" data-wow-duration="1500ms">
-                        <div class="service-one__box">
-                            <img src="assets/images/services/service-1-1.jpg" alt="">
-                            <div class="service-one__box-content">
-                                <h3><a href="service-details.html">Agriculture Leader</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-4 wow fadeInUp" data-wow-duration="1500ms">
-                        <div class="service-one__box">
-                            <img src="assets/images/services/service-1-2.jpg" alt="">
-                            <div class="service-one__box-content">
-                                <h3><a href="service-details.html">Quality Standards</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-4 wow fadeInUp" data-wow-duration="1500ms">
-                        <div class="service-one__box">
-                            <img src="assets/images/services/service-1-3.jpg" alt="">
-                            <div class="service-one__box-content">
-                                <h3><a href="service-details.html">Organic Services</a></h3>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -261,7 +217,6 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                 "slidesPerGroup": 2
             }
         }}'>
-                    <!-- Looping Data UMKM KAMI -->
                     <div class="swiper-wrapper">
                         <?php
                         foreach ($umkms['data'] as $umkm) { ?>
@@ -276,13 +231,13 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                         ?>
                     </div>
                     <div class="swiper-pagination" id="projects-one__swiper-pagination"></div>
-                </div><!-- /.swiper-container -->
-            </div><!-- /.container -->
-        </div><!-- /.projects-one -->
+                </div>
+            </div>
+        </div>
 
         <!-- Kata Kata Pengurus -->
         <section class="testimonials-one">
-            <img src="assets/images/icons/testimonials-bg-1-1.png" class="testimonials-one__bg" alt="">
+            <!-- <img src="assets/images/icons/testimonials-bg-1-1.png" class="testimonials-one__bg" alt=""> -->
             <div class="container">
                 <!-- <h2 class="testimonials-one__title">Testimonials</h2> -->
                 <div id="testimonials-one__carousel" class="testimonials-one__carousel swiper-container">
