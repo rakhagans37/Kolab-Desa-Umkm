@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #f2f2f2;
+}
+
+h3 {
+    text-align: center;
+    font-size: 20px;
+    margin: 0;
+    padding-top: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: stretch;
+    margin: 50px 0;
+    margin-top: 30px;
+}
+
+.content {
+    width: calc(33.33% - 30px);
+    margin: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 7px;
+    cursor: pointer;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0f43bd718bf7a75b0b1ea5e95b95709d2a11b5fe
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10), 0 10px 10px rgba(0, 0, 0, 0.10);
+    transition: 0.4s;
+    background: #FFFFFF;
+    align-self: normal;
+<<<<<<< HEAD
+=======
+=======
+    padding-top: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10), 0 10px 10px rgba(0,0,0,0.10);
+    transition: .4s;
+    background: #f2f2f2;
+>>>>>>> 0fdd96e3cfbc0509f668a005aa7f7f4f5a82ccf8
+>>>>>>> 0f43bd718bf7a75b0b1ea5e95b95709d2a11b5fe
+}
+
+.content:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transform: translate(0px, -8px);
+}
+
+.content img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover; /* Apply object-fit here */
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+<<<<<<< HEAD
+
+.content h3 {
+=======
+<<<<<<< HEAD
+
+.content h3 {
+=======
+.content h5{
+    text-align: left;
+    color:#b2bec3;
+    font-size: 1px;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+.content h6{
+    font-size: 8px;
+>>>>>>> 0fdd96e3cfbc0509f668a005aa7f7f4f5a82ccf8
+>>>>>>> 0f43bd718bf7a75b0b1ea5e95b95709d2a11b5fe
+    text-align: center;
+    color: #000; /* Change text color to black */
+    font-family: 'Poppins';
+}
+
+.content h6 {
+    font-size: 10px; /* Increase font size for better readability */
+    text-align: center;
+    color: #000; /* Change text color to black */
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Poppins";
+    letter-spacing: 0.36px;
+}
+
+.content ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+@media (max-width: 1000px) {
+    .content {
+        width: calc(50% - 30px); /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 750px) {
+    .content {
+        width: 100%; /* Make cards take full width on even smaller screens */
+    }
+}
