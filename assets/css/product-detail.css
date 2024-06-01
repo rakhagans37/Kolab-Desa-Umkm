@@ -1,0 +1,108 @@
+.product-details {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.product-details .container {
+    display: flex;
+    flex-direction: row;
+}
+
+.product-detail__image {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-detail__future-image {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.product-detail__future-image .future-image {
+    border-radius: 10px;
+    width: 400px;
+    height: 410px;
+    object-fit: cover;
+}
+
+.product-detail__list-image {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.product-detail__list-image > img {
+    border-radius: 10px;
+    width: 80px;
+    height: 85px;
+    cursor: pointer;
+    opacity: 0.6;
+    object-fit: cover;
+}
+
+.product-detail__list-image > img:hover {
+    opacity: 1;
+}
+
+.product-detail__information{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.product-detail__marketplace-tokopedia {
+    margin: 10px;
+}
+
+
+.product-detail__marketplace-tokopedia > img{
+    width: 40px;
+    height: auto;
+}
+
+.product-detail__marketplace-shopee {
+    margin: 10px;
+    
+}
+
+.product-detail__marketplace-shopee > img {
+    width: 40px;
+    height: auto;
+}
+
+.product-detail__marketplace-list {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 576px) {
+    .product-details .container {
+        flex-direction: column;
+    }
+
+    .product-detail__future-image .future-image{
+        width: 380px;
+        height: 380px;
+        margin-bottom: 20px;
+        align-self: center;
+    }
+
+    .product-detail__list-image > img {
+        width: 80px;
+        height: 85px;
+        justify-content: space-evenly;
+    
+    }
+
+    .product-detail__information {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .product-detail__information{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+  }

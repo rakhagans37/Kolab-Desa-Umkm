@@ -1,0 +1,19 @@
+.product-card {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.product-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-card h3.product-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+}
