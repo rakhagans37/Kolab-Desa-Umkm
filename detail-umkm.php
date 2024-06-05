@@ -4,6 +4,7 @@ $umkms = get_data_api('https://cms-pangalengan.desaumkm.com/api/umkms?populate=*
 $contact = get_data_api('https://cms-pangalengan.desaumkm.com/api/contact?populate=*');
 $produks = get_data_api('https://cms-pangalengan.desaumkm.com/api/produks?populate=*');
 $footer = get_data_api("https://cms-pangalengan.desaumkm.com/api/footer?populate=*");
+$category = get_data_api("http://localhost:1337/api/kategori-produks");
 
 
 
@@ -45,6 +46,7 @@ foreach ($produks['data'] as $produk) {
         $filteredProducts[] = $produk;
     }
 }
+
 
 ?>
 
@@ -103,10 +105,10 @@ foreach ($produks['data'] as $produk) {
                     <li></li>
                     <li></li>
                     <li><span></span></li>
-                </ul><!-- /.thm-breadcrumb list-unstyled -->
+                </ul>
                 <h2><?= $namaUmkm ?></h2>
-            </div><!-- /.container -->
-        </section><!-- /.page-header -->
+            </div>
+        </section>
 
         <section class="project-details">
             <div class="container" style="gap: 40px;">
@@ -139,10 +141,8 @@ foreach ($produks['data'] as $produk) {
                 <div class="content-container">
                     <!-- Category Box -->
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-                        <a class="list-group-item" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-                        <a class="list-group-item" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-                        <a class="list-group-item" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                        <a class="list-group-item active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><?= $category['data'][0]['attributes']['kategori_produk'] ?></a>
+                        <a class="list-group-item" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><?= $category['data'][1]['attributes']['kategori_produk'] ?></a>
                     </div>
 
                     <!-- Products -->
@@ -201,7 +201,7 @@ foreach ($produks['data'] as $produk) {
                         <option value="english">English</option>
                         <option value="arabic">Arabic</option>
                     </select>
-                </div><!-- /.mobile-nav__language -->
+                </div>
                 <div class="mobile-nav__social">
                     <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
                     <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
@@ -216,7 +216,6 @@ foreach ($produks['data'] as $produk) {
 
     <div class="search-popup">
         <div class="search-popup__overlay search-toggler"></div>
-        <!-- /.search-popup__overlay -->
         <div class="search-popup__content">
             <form action="#">
                 <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
@@ -226,13 +225,9 @@ foreach ($produks['data'] as $produk) {
                 </button>
             </form>
         </div>
-        <!-- /.search-popup__content -->
     </div>
-    <!-- /.search-popup -->
 
-    <!-- Mobile Nav Start -->
     <?php include_once './utils/mobile-nav.php' ?>
-    <!-- Mobile Nav Stop -->
 
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 

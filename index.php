@@ -19,14 +19,12 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pangalengan Desa UMKM</title>
-    <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cms-pangalengan.desaumkm.com<?= $footer["data"]["attributes"]["logo_desaumkm"]["data"]["attributes"]["url"] ?>">
     <link rel="icon" type="image/png" sizes="16x16" href="https://cms-pangalengan.desaumkm.com<?= $footer["data"]["attributes"]["logo_desaumkm"]["data"]["attributes"]["url"] ?>">
     <link rel="manifest" href="assets/images/favicons/site.webmanifest">
     <meta name="home" content="Pangalengan Desa UMKM">
 
-    <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -43,11 +41,8 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
     <link rel="stylesheet" href="assets/css/nouislider.pips.css">
     <link rel="stylesheet" href="assets/css/newcss.css">
 
-    <!-- template styles -->
     <link rel="stylesheet" href="assets/css/product.css">
     <link rel="stylesheet" href="assets/sass/main.css">
-
-    <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
 </head>
 
 <body>
@@ -133,33 +128,32 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                         <!-- <div class=""><img src="https://cms-pangalengan.desaumkm.com<?= $footer["data"]["attributes"]["logo_desaumkm"]["data"]["attributes"]["url"] ?>" width="20" alt=""></div> -->
                         <p>SELAMAT DATANG WIRAUSAHAWAN</p>
                         <h3>Menginspirasi Desa Melalui UMKM </h3>
-                    </div><!-- /.block-title -->
+                    </div>
                     <div class="about-one__tagline">
                         <p>Kami memiliki 5 tahun pengalaman dalam memperbesar UMKM di berbagai desa di Bandung</p>
-                    </div><!-- /.about-one__tagline -->
+                    </div>
                     <div class="about-one__summery">
                         <p>UMKM di Pangalengan, Jawa Barat, adalah cerminan dari semangat kewirausahaan yang kuat di kalangan masyarakat setempat. Dengan beragam produk unggulan mulai dari hasil pertanian, kerajinan tangan, hingga kuliner khas, UMKM di Pangalengan berperan penting dalam perekonomian lokal dan memberikan kontribusi signifikan terhadap peningkatan kesejahteraan masyarakat. Dengan dukungan pemerintah daerah dan berbagai pihak terkait, UMKM di Pangalengan terus berkembang dan berinovasi. Melalui berbagai pelatihan dan pendampingan, para pelaku UMKM di Pangalengan terus meningkatkan kapasitas mereka untuk menghasilkan produk yang berkualitas dan berdaya saing tinggi. Secara keseluruhan, UMKM di Pangalengan adalah contoh nyata dari bagaimana sektor UMKM dapat memberikan dampak positif bagi perekonomian lokal dan masyarakat sekitar. Dengan semangat kewirausahaan yang kuat dan dukungan yang tepat, UMKM di Pangalengan akan terus tumbuh dan berkembang menjadi lebih baik lagi di masa depan.</p>
-                    </div><!-- /.about-one__summery -->
+                    </div>
                     <div class="about-one__icon-row">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="about-one__box">
                                     <i class="agrikon-icon-farmer"></i>
                                     <h4>UMKM Berkarya</h4>
-                                </div><!-- /.about-one__box -->
-                            </div><!-- /.col-lg-6 -->
+                                </div>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="about-one__box">
                                     <i class="agrikon-icon-agriculture"></i>
                                     <h4>UMKM Maju</h4>
-                                </div><!-- /.about-one__box -->
-                            </div><!-- /.col-lg-6 -->
-                        </div><!-- /.row -->
-                    </div><!-- /.about-one__icon-row -->
-                    <!-- <a href="list-umkm.php" class="thm-btn">Discover More</a> -->
-                </div><!-- /.about-one__content -->
-            </div><!-- /.container -->
-        </section><!-- /.about-one -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="service-two">
             <div class="service-two__bottom-curv"></div>
@@ -168,7 +162,7 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                     <!-- <div class=""><img src="https://cms-pangalengan.desaumkm.com<?= $footer["data"]["attributes"]["logo_desaumkm"]["data"]["attributes"]["url"] ?>" width="20" alt=""></div> -->
                     <p>Aktifitas kami</p>
                     <h3>Apa yang kami lakukan</h3>
-                </div><!-- /.block-title -->
+                </div>
                 <div class="row">
                     <?php
                     foreach ($activities['data'] as $activity) { ?>
@@ -176,26 +170,25 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                             <div class="service-two__card">
                                 <div class="service-two__card-image">
                                     <img src="https://cms-pangalengan.desaumkm.com<?= $activity['attributes']['gambar_aktivitas']['data']['attributes']['url'] ?>" width="200" height="200" alt="">
-                                </div><!-- /.service-two__card-image -->
+                                </div>
                                 <div class="service-two__card-content" style="margin-top: -1.2rem; padding-top: 0.5rem; padding-bottom: 1rem;">
                                     <h3><a href="#"><?= $activity['attributes']['judul_aktivitas'] ?></a></h3>
                                     <p><?= $activity['attributes']['deskripsi_aktivitas'] ?></p>
-                                </div><!-- /.service-two__card-content -->
-                            </div><!-- /.service-two__card -->
-                        </div><!-- /.col-sm-12 col-md-6 col-lg-3 -->
+                                </div>
+                            </div>
+                        </div>
                     <?php
                     }
                     ?>
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </section><!-- /.service-two -->
+                </div>
+            </div>
+        </section>
 
-        <!-- UMKM KAMI -->
         <div class="projects-one project-one__home-one">
             <div class="container">
                 <div class="block-title text-center">
                     <h3>UMKM KAMI</h3>
-                </div><!-- /.block-title -->
+                </div>
                 <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 0, "slidesPerView": 1, "loop": true, "slidesPerGroup": 1, "pagination": {
                         "el": "#projects-one__swiper-pagination",
                         "type": "bullets",
@@ -239,24 +232,20 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                 </div>
             </div>
         </div>
-
-        <!-- Kata Kata Pengurus -->
         <section class="testimonials-one">
-            <!-- <img src="assets/images/icons/testimonials-bg-1-1.png" class="testimonials-one__bg" alt=""> -->
             <div class="container">
-                <!-- <h2 class="testimonials-one__title">Testimonials</h2> -->
                 <div id="testimonials-one__carousel" class="testimonials-one__carousel swiper-container">
                     <div class="swiper-wrapper">
                         <?php
                         foreach ($kepengurusans['data'] as $kepengurusan) { ?>
                             <div class="swiper-slide">
                                 <p><?= $kepengurusan['attributes']['testimoni_kepengurusan'] ?></p>
-                            </div><!-- /.swiper-slide -->
+                            </div>
                         <?php
                         }
                         ?>
-                    </div><!-- /.swiper-wrapper -->
-                </div><!-- /#testimonials-one__carousel -->
+                    </div>
+                </div>
 
                 <div id="testimonials-one__thumb" class="swiper-container">
                     <div class="swiper-wrapper">
@@ -285,17 +274,17 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                                 <div class="testimonials-one__meta">
                                     <h4><?= $kepengurusan['attributes']['nama_pengurus'] ?></h4>
                                     <span><?= $kepengurusan['attributes']['jabatan_kepengurusan'] ?></span>
-                                </div><!-- /.testimonials-one__meta -->
-                            </div><!-- /.swiper-slide -->
+                                </div>
+                            </div>
                         <?php
                         }
                         ?>
-                    </div><!-- /.swiper-wrapper -->
-                </div><!-- /#testimonials-one__meta.swiper-container -->
+                    </div>
+                </div>
 
                 <div class="swiper-pagination" id="testimonials-one__swiper-pagination"></div>
-            </div><!-- /.container -->
-        </section><!-- /.testimonials-one -->
+            </div>
+        </section>
 
         <section class="contact-two">
             <div class="container">
@@ -314,21 +303,21 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                                 <!-- <div class=""><img src="https://cms-pangalengan.desaumkm.com<?= $footer["data"]["attributes"]["logo_desaumkm"]["data"]["attributes"]["url"] ?>" width="20" alt=""></div> -->
                                 <p>Hubungi Kami</p>
                                 <h3>Tinggalkan Pesan</h3>
-                            </div><!-- /.block-title -->
+                            </div>
                             <div class="contact-two__summery">
                                 Kami senang jika anda memiliki pertanyaan, saran, atau ingin berbicara lebih lanjut, jangan ragu untuk menghubungi kami melalui WhatsApp. Kami siap menjawab semua pertanyaan Anda. <br> <br>
                                 <div class="">
                                     <a href="https://wa.me/<?= $nohp_desaumkm ?>" target="_blank" class="thm-btn">
                                         <i class="agrikon-icon-phone-call"></i>
                                         <span class="">Kirim Pesan Ke WhatsApp</span>
-                                    </a><!-- /.main-header__info-phone -->
-                                </div><!-- /.col-lg-12 -->
-                            </div><!-- /.contact-two__summery -->
-                        </div><!-- /.contact-two__content -->
-                    </div><!-- /.col-sm-12 col-md-12 col-lg-12 col-xl-4 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </section><!-- /.contact-two -->
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Logo Mitra -->
         <div class="client-carousel client-carousel__has-border-top">
@@ -360,16 +349,16 @@ $kategoris = get_data_api("https://cms-pangalengan.desaumkm.com/api/kategoris?po
                 }
             }}'>
                     <!-- Looping Data Logo Mitra -->
-                    <ul class="swiper-wrapper" id="ul">
+                    <div class="swiper-wrapper">
                         <?php
                         foreach ($mitras['data'] as $mitra) { ?>
-                            <li class="swiper-slide">
+                            <div class="swiper-slide">
                                 <img src="https://cms-pangalengan.desaumkm.com<?= $mitra['attributes']['foto_mitra']['data'][0]['attributes']['url'] ?>" width="200" alt="" style="max-width: 170%;">
-                            </li>
+                            </div>
                         <?php
                         }
                         ?>
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>

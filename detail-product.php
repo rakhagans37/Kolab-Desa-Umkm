@@ -4,6 +4,7 @@ $umkms = get_data_api('https://cms-pangalengan.desaumkm.com/api/umkms?populate=*
 $contact = get_data_api('https://cms-pangalengan.desaumkm.com/api/contact?populate=*');
 $footer = get_data_api('https://cms-pangalengan.desaumkm.com/api/footer?populate=*');
 
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $products = get_data_api("https://cms-pangalengan.desaumkm.com/api/produks/{$id}?populate=*");
@@ -81,19 +82,17 @@ if (isset($_GET['id'])) {
             <div class="sticky-header__content"></div>
         </div>
 
-
-
-        <!-- <section class="page-header">
-            <div class="page-header__bg" style="background-image: url('https://cms-pangalengan.desaumkm.com<?= $umkms['data'][0]['attributes']['slider_image']['data']['attributes']['url'] ?>');" alt=""></div>
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image:url('https://cms-pangalengan.desaumkm.com<?= $contact["data"]["attributes"]["slide_image"]["data"]["attributes"]["url"] ?>')" alt=""></div>
             <div class="container">
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html"></a></li>
+                    <li></li>
                     <li></li>
                     <li><span></span></li>
                 </ul>
-                <h2><?php echo $namaUmkm ?></h2>
+                <h2><?= $umkmName ?></h2>
             </div>
-        </section> -->
+        </section>
 
         <section id="product-detail" class="product-details">
             <div class="container">
@@ -118,16 +117,16 @@ if (isset($_GET['id'])) {
                         <p><?= $productDescription ?></p>
                     </div>
                     <div>
-                        <h1><?= $umkmName ?></h1>
+                        <h1>Alamat UMKM</h1>
                         <p><?= $umkmAddress ?></p>
                     </div>
-                    <div class="product-detail__marketplace">
+                    <!-- <div class="product-detail__marketplace">
                         <h1>Marketplace</h1>
                         <div class="product-detail__marketplace-list">
                             <a class="product-detail__marketplace-tokopedia" href="https://www.tokopedia.com/"><img src="assets/images/shopee-seeklogo.jpg" alt=""></a>
                             <a class="product-detail__marketplace-shopee" href="https://www.tokopedia.com/"><img src="assets/images/shopee-seeklogo.jpg" alt=""></a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
