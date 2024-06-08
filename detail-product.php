@@ -106,17 +106,17 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
                 <div class="product-detail__information">
-                    <div>
+                    <div class="product-name">
                         <h1><?= $productName ?></h1>
                     </div>
-                    <div>
+                    <div class="product-price">
                         <p><?= $rangeProductPrice ?></p>
                     </div>
-                    <div>
+                    <div class="product-description">
                         <h1>Deskripsi Produk</h1>
                         <p><?= $productDescription ?></p>
                     </div>
-                    <div>
+                    <div class="product-address">
                         <h1>Alamat UMKM</h1>
                         <p><?= $umkmAddress ?></p>
                     </div>

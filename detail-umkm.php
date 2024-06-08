@@ -1,19 +1,15 @@
 <?php
 require_once 'utils/curl.php';
-$umkms = get_data_api('https://cms-pangalengan.desaumkm.com/api/umkms?populate=*');
+$umkms = get_data_api('http://localhost:1337/api/umkms?populate=*');
 $contact = get_data_api('https://cms-pangalengan.desaumkm.com/api/contact?populate=*');
-$produks = get_data_api('https://cms-pangalengan.desaumkm.com/api/produks?populate=*');
+$produks = get_data_api('http://localhost:1337/api/produks?populate=*');
 $footer = get_data_api("https://cms-pangalengan.desaumkm.com/api/footer?populate=*");
-$category = get_data_api("http://localhost:1337/api/kategori-produks");
-
-
-
+$categories = get_data_api("http://localhost:1337/api/kategori-produks");
 
 if (isset($_GET['id'])) {
     $requestedId = $_GET['id'];
     foreach ($umkms['data'] as $umkm) {
         if ($umkm['id'] == $requestedId) {
-
             $namaUmkm = $umkm['attributes']['nama_umkm'];
             $tahunberdiri = $umkm['attributes']['tahun_berdiri_umkm'];
             $kategori = $umkm['attributes']['kategoris']['data']['attributes']['nama_kategori'];
@@ -27,7 +23,6 @@ if (isset($_GET['id'])) {
             $sosialMedia = $umkm['attributes']['url_socialmedia_umkm'];
             $marketplace = $umkm['attributes']['url_marketplace'];
             $noHpUmkm = $umkm['attributes']['nohp_umkm'];
-
             break;
         }
     }
@@ -37,16 +32,12 @@ if (isset($_GET['id'])) {
 
 $umkmId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-
 $filteredProducts = [];
-
-
 foreach ($produks['data'] as $produk) {
     if (isset($produk['attributes']['umkm']['data']['id']) && $produk['attributes']['umkm']['data']['id'] == $umkmId) {
         $filteredProducts[] = $produk;
     }
 }
-
 
 ?>
 
@@ -119,7 +110,7 @@ foreach ($produks['data'] as $produk) {
                         <h1 class="header-title"><?= $namaUmkm ?></h1>
                         <h2 class="font-weight-light" style="font-size: 20px;">Sejak <?= $tahunberdiri ?></h2>
                         <div class="header-links">
-                            <a href="https://wa.me/<?= $nohp_desaumkm ?>" class="whatsapp-link">
+                            <a href="https://wa.me/<?= $noHpUmkm ?>" class="whatsapp-link">
                                 <div class="link-content whatsapp-content p-6">
                                     <img src="./assets/images/icons/whatsapp.png" alt="Whatsapp" class="icon">
                                     <span>Whatsapp</span>
@@ -140,13 +131,14 @@ foreach ($produks['data'] as $produk) {
                 <!-- Content -->
                 <div class="content-container">
                     <!-- Category Box -->
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><?= $category['data'][0]['attributes']['kategori_produk'] ?></a>
-                        <a class="list-group-item" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><?= $category['data'][1]['attributes']['kategori_produk'] ?></a>
+                    <div class="list-group" id="categories" role="tablist">
+                        <?php foreach ($categories['data'] as $index => $category) { ?>
+                            <a class="list-group-item <?= $index === 0 ? 'active' : '' ?>" id="list-<?= $category['id'] ?>-list" data-toggle="list" href="#list-<?= $category['id'] ?>" role="tab" aria-controls="home" onclick="loadProducts(<?= $category['id'] ?>)"><?= $category['attributes']['kategori_produk'] ?></a>
+                        <?php } ?>
                     </div>
 
                     <!-- Products -->
-                    <div class="products-container">
+                    <div id="products" class="products-container">
                         <?php foreach ($filteredProducts as $product) { ?>
                             <div class="product-card">
                                 <a href="detail-product.php?id=<?= $product['id'] ?>">
@@ -157,8 +149,6 @@ foreach ($produks['data'] as $produk) {
                         <?php } ?>
                     </div>
                 </div>
-
-
             </div><!-- /.container -->
         </section><!-- /.project-details -->
 
@@ -231,7 +221,6 @@ foreach ($produks['data'] as $produk) {
 
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
-
     <script src="assets/js/jquery-3.5.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/swiper.min.js"></script>
@@ -249,6 +238,43 @@ foreach ($produks['data'] as $produk) {
 
     <!-- template js -->
     <script src="assets/js/theme.js"></script>
+    <script>
+        const productsData = <?= json_encode($produks['data']) ?>;
+
+        function loadProducts(categoryId) {
+            const filteredProducts = productsData.filter(product => product.attributes.kategori_produk.data.id === categoryId);
+            const productContainer = document.getElementById('products');
+
+            productContainer.innerHTML = '';
+
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+
+                const productLink = document.createElement('a');
+                productLink.href = `detail-product.php?id=${product.id}`;
+
+                const productImage = document.createElement('img');
+                productImage.src = `https://cms-pangalengan.desaumkm.com${product.attributes.foto_produk.data[0].attributes.url}`;
+                productImage.alt = product.attributes.nama_produk;
+                productImage.className = 'product-image';
+
+                const productTitle = document.createElement('h3');
+                productTitle.className = 'product-title';
+                productTitle.innerText = product.attributes.nama_produk;
+
+                productLink.appendChild(productImage);
+                productLink.appendChild(productTitle);
+                productCard.appendChild(productLink);
+                productContainer.appendChild(productCard);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstCategoryId = <?= $categories['data'][0]['id'] ?>;
+            loadProducts(firstCategoryId);
+        });
+    </script>
 </body>
 
 </html>
