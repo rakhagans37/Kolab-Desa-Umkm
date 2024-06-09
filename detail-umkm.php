@@ -4,7 +4,7 @@ $umkms = get_data_api('http://localhost:1337/api/umkms?populate=*');
 $contact = get_data_api('https://cms-pangalengan.desaumkm.com/api/contact?populate=*');
 $produks = get_data_api('http://localhost:1337/api/produks?populate=*');
 $footer = get_data_api("https://cms-pangalengan.desaumkm.com/api/footer?populate=*");
-$categories = get_data_api("http://localhost:1337/api/kategori-produks");
+$categories = get_data_api("http://localhost:1337/api/kategori-produks?populate=*");
 
 if (isset($_GET['id'])) {
     $requestedId = $_GET['id'];
@@ -36,6 +36,26 @@ $filteredProducts = [];
 foreach ($produks['data'] as $produk) {
     if (isset($produk['attributes']['umkm']['data']['id']) && $produk['attributes']['umkm']['data']['id'] == $umkmId) {
         $filteredProducts[] = $produk;
+    }
+}
+
+$categoriesId = array();
+foreach ($filteredProducts as $product) {
+    $productId = $product['id'];
+
+    foreach ($categories['data'] as $category) {
+        $productCategoryId = array_column($category['attributes']['produks']['data'], 'id');
+        if (in_array($productId, $productCategoryId)) {
+            $categoriesId[] = $category['id'];
+        }
+    }
+}
+
+$filteredCategories = [];
+foreach ($categoriesId as $id) {
+    foreach ($categories['data'] as $category) {
+        if ($category['id'] == $id)
+            $filteredCategories[] = $category;
     }
 }
 
@@ -132,7 +152,7 @@ foreach ($produks['data'] as $produk) {
                 <div class="content-container">
                     <!-- Category Box -->
                     <div class="list-group" id="categories" role="tablist">
-                        <?php foreach ($categories['data'] as $index => $category) { ?>
+                        <?php foreach ($filteredCategories as $index => $category) { ?>
                             <a class="list-group-item <?= $index === 0 ? 'active' : '' ?>" id="list-<?= $category['id'] ?>-list" data-toggle="list" href="#list-<?= $category['id'] ?>" role="tab" aria-controls="home" onclick="loadProducts(<?= $category['id'] ?>)"><?= $category['attributes']['kategori_produk'] ?></a>
                         <?php } ?>
                     </div>
