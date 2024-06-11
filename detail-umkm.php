@@ -39,25 +39,30 @@ foreach ($produks['data'] as $produk) {
     }
 }
 
-$categoriesId = array();
+$categoriesId = [];
 foreach ($filteredProducts as $product) {
-    $productId = $product['id'];
-
-    foreach ($categories['data'] as $category) {
-        $productCategoryId = array_column($category['attributes']['produks']['data'], 'id');
-        if (in_array($productId, $productCategoryId)) {
-            $categoriesId[] = $category['id'];
-        }
+    $productCategoryId = $product['attributes']['kategori_produk']['data']['id'];
+    if (!in_array($productCategoryId, $categoriesId)) {
+        $categoriesId[] = $productCategoryId;
     }
 }
 
 $filteredCategories = [];
 foreach ($categoriesId as $id) {
     foreach ($categories['data'] as $category) {
-        if ($category['id'] == $id)
+        if ($category['id'] == $id) {
             $filteredCategories[] = $category;
+        }
     }
 }
+
+$allCategories = [
+    'id' => 0,
+    'attributes' => [
+        'kategori_produk' => 'Semua Kategori'
+    ]
+];
+array_unshift($filteredCategories, $allCategories);
 
 ?>
 
@@ -125,7 +130,7 @@ foreach ($categoriesId as $id) {
             <div class="container" style="gap: 40px;">
                 <!-- Header -->
                 <div class="header-container">
-                    <img src="https://cms-pangalengan.desaumkm.com<?= $foto_umkm['data']['attributes']['url'] ?>" alt="Image 1" class="header-image">
+                    <img src="http://localhost:1337<?= $foto_umkm['data']['attributes']['url'] ?>" alt="Image 1" class="header-image">
                     <div class="header-details">
                         <h1 class="header-title"><?= $namaUmkm ?></h1>
                         <h2 class="font-weight-light" style="font-size: 20px;">Sejak <?= $tahunberdiri ?></h2>
@@ -153,7 +158,9 @@ foreach ($categoriesId as $id) {
                     <!-- Category Box -->
                     <div class="list-group" id="categories" role="tablist">
                         <?php foreach ($filteredCategories as $index => $category) { ?>
-                            <a class="list-group-item <?= $index === 0 ? 'active' : '' ?>" id="list-<?= $category['id'] ?>-list" data-toggle="list" href="#list-<?= $category['id'] ?>" role="tab" aria-controls="home" onclick="loadProducts(<?= $category['id'] ?>)"><?= $category['attributes']['kategori_produk'] ?></a>
+                            <a class="list-group-item <?= $index === 0 ? 'active' : '' ?>" id="list-<?= $category['id'] ?>-list" data-category-id="<?= $category['id'] ?>" href="#list-<?= $category['id'] ?>" role="tab" aria-controls="home">
+                                <?= $category['attributes']['kategori_produk'] ?>
+                            </a>
                         <?php } ?>
                     </div>
 
@@ -162,14 +169,13 @@ foreach ($categoriesId as $id) {
                         <?php foreach ($filteredProducts as $product) { ?>
                             <div class="product-card">
                                 <a href="detail-product.php?id=<?= $product['id'] ?>">
-                                    <img src="https://cms-pangalengan.desaumkm.com<?= $product['attributes']['foto_produk']['data'][0]['attributes']['url'] ?>" alt="<?= $product['attributes']['nama_produk'] ?>" class="product-image">
+                                    <img src="http://localhost:1337<?= $product['attributes']['foto_produk']['data'][0]['attributes']['url'] ?>" alt="<?= $product['attributes']['nama_produk'] ?>" class="product-image">
                                     <h3 class="product-title"><?= $product['attributes']['nama_produk'] ?></h3>
                                 </a>
                             </div>
                         <?php } ?>
                     </div>
                 </div>
-            </div><!-- /.container -->
         </section><!-- /.project-details -->
 
         <!-- Footer Start -->
@@ -259,13 +265,15 @@ foreach ($categoriesId as $id) {
     <!-- template js -->
     <script src="assets/js/theme.js"></script>
     <script>
-        const productsData = <?= json_encode($produks['data']) ?>;
+        const productsData = <?= json_encode($filteredProducts) ?>;
 
         function loadProducts(categoryId) {
-            const filteredProducts = productsData.filter(product => product.attributes.kategori_produk.data.id === categoryId);
             const productContainer = document.getElementById('products');
-
             productContainer.innerHTML = '';
+
+            const filteredProducts = categoryId === 0 ?
+                productsData :
+                productsData.filter(product => product.attributes.kategori_produk.data.id === categoryId);
 
             filteredProducts.forEach(product => {
                 const productCard = document.createElement('div');
@@ -275,7 +283,10 @@ foreach ($categoriesId as $id) {
                 productLink.href = `detail-product.php?id=${product.id}`;
 
                 const productImage = document.createElement('img');
-                productImage.src = `https://cms-pangalengan.desaumkm.com${product.attributes.foto_produk.data[0].attributes.url}`;
+                const imageUrl = product.attributes.foto_produk && product.attributes.foto_produk.data && product.attributes.foto_produk.data[0] ?
+                    `http://localhost:1337${product.attributes.foto_produk.data[0].attributes.url}` :
+                    'default-image-url.jpg'; // URL gambar default jika gambar produk tidak tersedia
+                productImage.src = imageUrl;
                 productImage.alt = product.attributes.nama_produk;
                 productImage.className = 'product-image';
 
@@ -291,8 +302,19 @@ foreach ($categoriesId as $id) {
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const firstCategoryId = <?= $categories['data'][0]['id'] ?>;
+            const firstCategoryId = <?= $filteredCategories[0]['id'] ?>;
             loadProducts(firstCategoryId);
+        });
+
+        document.querySelectorAll('.list-group-item').forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.preventDefault();
+                const categoryId = parseInt(this.getAttribute('data-category-id'));
+                loadProducts(categoryId);
+
+                document.querySelectorAll('.list-group-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
     </script>
 </body>

@@ -1,13 +1,13 @@
 <?php
 require_once 'utils/curl.php';
-$umkms = get_data_api('https://cms-pangalengan.desaumkm.com/api/umkms?populate=*');
+$umkms = get_data_api('http://localhost:1337/api/umkms?populate=*');
 $contact = get_data_api('https://cms-pangalengan.desaumkm.com/api/contact?populate=*');
 $footer = get_data_api('https://cms-pangalengan.desaumkm.com/api/footer?populate=*');
 
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $products = get_data_api("https://cms-pangalengan.desaumkm.com/api/produks/{$id}?populate=*");
+    $products = get_data_api("http://localhost:1337/api/produks/{$id}?populate=*");
     $productName = $products['data']['attributes']['nama_produk'];
     $productDescription = $products['data']['attributes']['deskripsi_produk'];
     $rangeProductPrice = $products['data']['attributes']['harga_produk'];
@@ -97,11 +97,11 @@ if (isset($_GET['id'])) {
         <section id="product-detail" class="product-details">
             <div class="container">
                 <div class="product-detail__image">
-                    <div class="product-detail__future-image"><img id="featureImage" class="future-image" src="https://cms-pangalengan.desaumkm.com<?= $featureImageProduct ?>" alt="produkUMKM"></div>
+                    <div class="product-detail__future-image"><img id="featureImage" class="future-image" src="http://localhost:1337<?= $featureImageProduct ?>" alt="produkUMKM"></div>
 
                     <div class="product-detail__list-image">
                         <?php foreach ($products['data']['attributes']['foto_produk']['data'] as $product) { ?>
-                            <img class="" src="https://cms-pangalengan.desaumkm.com<?= $product['attributes']['url'] ?>" alt="produkUMKM" onclick="changeFeatureImage('<?= $product['attributes']['url'] ?>')">
+                            <img class="" src="http://localhost:1337<?= $product['attributes']['url'] ?>" alt="produkUMKM" onclick="changeFeatureImage('<?= $product['attributes']['url'] ?>')">
                         <?php } ?>
                     </div>
                 </div>
@@ -230,7 +230,7 @@ if (isset($_GET['id'])) {
     <!-- template js -->
     <script src="assets/js/theme.js"></script>
     <script>
-        const baseURL = "https://cms-pangalengan.desaumkm.com";
+        const baseURL = "http://localhost:1337";
 
         function changeFeatureImage(imageUrl) {
             document.getElementById('featureImage').src = baseURL + imageUrl;

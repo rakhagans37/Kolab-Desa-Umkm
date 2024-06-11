@@ -2,8 +2,8 @@
 require_once 'utils/curl.php';
 
 // Get data from API
-$umkms = get_data_api('https://cms-pangalengan.desaumkm.com/api/umkms?populate=*');
-$produks = get_data_api('https://cms-pangalengan.desaumkm.com/api/produks?populate=*');
+$umkms = get_data_api('http://localhost:1337/api/umkms?populate=*');
+$produks = get_data_api('http://localhost:1337/api/produks?populate=*');
 $contact = get_data_api('https://cms-pangalengan.desaumkm.com/api/contact?populate=*');
 $footer = get_data_api("https://cms-pangalengan.desaumkm.com/api/footer?populate=*");
 $umkms1 = get_data_api('https://cms-pangalengan.desaumkm.com/api/umkms/1?populate=*');
@@ -103,7 +103,7 @@ $umkms2 = get_data_api('https://cms-pangalengan.desaumkm.com/api/umkms/11?popula
                 <div class="products-card">
                     <?php foreach ($umkms['data'] as $umkm) { ?>
                         <div class="products-card__content">
-                            <a href="detail-umkm.php?id=<?= $umkm['id'] ?>"><img src="https://cms-pangalengan.desaumkm.com<?= $umkm['attributes']['profile_picture_umkm']['data']['attributes']['url'] ?>">
+                            <a href="detail-umkm.php?id=<?= $umkm['id'] ?>"><img src="http://localhost:1337<?= $umkm['attributes']['profile_picture_umkm']['data']['attributes']['url'] ?>">
                                 <h3 class="products-card__title"><?= $umkm['attributes']['nama_umkm'] ?></h3>
                             </a>
 
