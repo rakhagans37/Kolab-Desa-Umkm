@@ -1,0 +1,44 @@
+div.container div.footer{
+    flex-direction: column;
+    gap: 20px;
+}
+div.container div.footer div.footer-main div.footer-widget{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+div.container div.footer div.footer-main div.footer-widget p.description{
+    text-align: justify;
+    width: 100%;
+    max-width: 100%;
+}
+div.container div.footer div.footer-secondary{
+    display:flex;
+    flex-direction:row;
+    margin:0; 
+    gap:50px; 
+    width:100%;
+}
+
+
+@media only screen and (min-width: 768px) {
+    div.container div.footer{
+        justify-content:space-between;
+        align-items:center; 
+        margin: 0;display: flex;
+        flex-direction: row; 
+    }
+    div.container div.footer div.footer-main div.footer-widget p.description{
+        text-align: justify;
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+    
+
+
+
+
+
